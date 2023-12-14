@@ -56,11 +56,11 @@ namespace XamarinAndroid.SmsForward
 
                 if (stringBuilder.Length >= 0)
                 {
-                    var mailsender = new EmailSender();
+                    ISMSForwarder sMSForwarder = new EmailSender();
 
                     try
                     {
-                        mailsender.SendEmail(stringBuilder.ToString());
+                        sMSForwarder.Send(stringBuilder.ToString());
                     }
                     catch (Exception ex)
                     {
@@ -68,7 +68,7 @@ namespace XamarinAndroid.SmsForward
                     }
                     finally
                     {
-                        mailsender.Dispose();
+                        sMSForwarder.Dispose();
                     }
                 }
             }
